@@ -122,6 +122,8 @@ end
 # p fibonacci_iter(6)
 
 def bsearch(arr, target) # returns index of target in the arr
+    return nil if arr.empty?
+
     mid_index = (arr.length) / 2
     return mid_index if arr[mid_index] == target
 
@@ -135,13 +137,13 @@ def bsearch(arr, target) # returns index of target in the arr
     end
 end
 
-# p bsearch([1, 2, 3], 1) # => 0
-# p bsearch([2, 3, 4, 5], 3) # => 1
-# p bsearch([2, 4, 6, 8, 10], 6) # => 2
-# p bsearch([1, 3, 4, 5, 9], 5) # => 3
-# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 
 def merge_sort(arr)
@@ -152,28 +154,29 @@ def merge_sort(arr)
     left = merge_sort(arr[0..i])
     right = merge_sort(arr[(i + 1)..-1])
 
-    merge()
-
+    merge(left, right)
+    
 end
 
 def merge(left, right)
+    new_arr = []
 
-    while !left.empty && !right.empty
+    while !left.empty || !right.empty
         if left.first > right.first
-
+            new_arr << right.shift
         else
-
+            new_arr << left.shift
+        end
     end
 
 end
 
-def subsets(arr)
-    return arr if arr.length == 1
-    left = arr[0..-2]
+# def subsets(arr)
+#     return arr if arr.length == 1
+#     left = arr[0..-2]
 
-    subsets(left)
-
-end
+#     subsets(left)
+# end
 
 
     
